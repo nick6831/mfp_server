@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-03-2019 14:36:22 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.dimacofi.DAO.Impresora" table="impresora" schema="public" optimistic-lock="version">
+        <comment>Tabla principal de una impresora, registrada a un contrato</comment>
+        <id name="codserie" type="string">
+            <column name="codserie" length="50" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="contratosMfp" class="com.dimacofi.DAO.ContratosMfp" fetch="select">
+            <column name="contrato" not-null="true" />
+        </many-to-one>
+        <many-to-one name="monitorDevice" class="com.dimacofi.DAO.MonitorDevice" fetch="select">
+            <column name="id_device" />
+        </many-to-one>
+        <property name="hh" type="java.lang.Integer">
+            <column name="hh" />
+        </property>
+        <property name="modelo" type="string">
+            <column name="modelo" not-null="true" />
+        </property>
+        <property name="marca" type="string">
+            <column name="marca" not-null="true" />
+        </property>
+        <set name="valueses" table="values" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codserie" length="50" />
+            </key>
+            <one-to-many class="com.dimacofi.DAO.Values" />
+        </set>
+        <one-to-one name="ip" class="com.dimacofi.DAO.Ip"></one-to-one>
+    </class>
+</hibernate-mapping>

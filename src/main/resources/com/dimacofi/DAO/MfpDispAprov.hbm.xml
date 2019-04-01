@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-03-2019 12:04:33 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.dimacofi.DAO.MfpDispAprov" table="mfp_disp_aprov" schema="public" optimistic-lock="version">
+        <id name="codserie" type="string">
+            <column name="codserie" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="mac" type="string">
+            <column name="mac" not-null="true" />
+        </property>
+        <property name="ipDevice" type="string">
+            <column name="ip_device" />
+        </property>
+        <property name="type" type="short">
+            <column name="type" />
+        </property>
+        <property name="descEstado" type="string">
+            <column name="desc_estado" />
+        </property>
+        <property name="hh" type="java.lang.Integer">
+            <column name="hh" />
+        </property>
+        <property name="contrato" type="int">
+            <column name="contrato" />
+        </property>
+        <property name="nomModel" type="string">
+            <column name="nom_model" not-null="true" />
+        </property>
+        <property name="copiaColor" type="string">
+            <column name="copia_color" />
+        </property>
+        <property name="copiaBn" type="string">
+            <column name="copia_bn" />
+        </property>
+        <property name="imprColor" type="string">
+            <column name="impr_color" />
+        </property>
+        <property name="imprBn" type="string">
+            <column name="impr_bn" />
+        </property>
+        <property name="a3Color" type="string">
+            <column name="a3_color" />
+        </property>
+        <property name="b4Color" type="string">
+            <column name="b4_color" />
+        </property>
+        <property name="a3Bn" type="string">
+            <column name="a3_bn" />
+        </property>
+        <property name="b4Bn" type="string">
+            <column name="b4_bn" />
+        </property>
+        <property name="metro" type="string">
+            <column name="metro" />
+        </property>
+        <property name="dupl" type="string">
+            <column name="dupl" />
+        </property>
+          <property name="negro" type="string">
+            <column name="negro" />
+        </property>
+        <property name="cian" type="string">
+            <column name="cian" />
+        </property>
+        <property name="magenta" type="string">
+            <column name="magenta" />
+        </property>
+        <property name="amarillo" type="string">
+            <column name="amarillo" />
+        </property>
+        <property name="ipImp" type="string">
+            <column name="ip_imp" />
+        </property>
+        <property name="scannerColor" type="string">
+            <column name="scanner_color" />
+        </property>
+        <property name="scannerBn" type="string">
+            <column name="scanner_bn" />
+        </property>
+    </class>
+</hibernate-mapping>

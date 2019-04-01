@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-03-2019 14:36:22 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.dimacofi.DAO.MonitorDevice" table="monitor_device" schema="public" optimistic-lock="version">
+        <id name="idDevice" type="int">
+            <column name="id_device" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="estado" class="com.dimacofi.DAO.Estado" fetch="select">
+            <column name="id_estado" />
+        </many-to-one>
+        <many-to-one name="typeDevice" class="com.dimacofi.DAO.TypeDevice" fetch="select">
+            <column name="type" not-null="true" />
+        </many-to-one>
+        <property name="mac" type="string">
+            <column name="mac" not-null="true" />
+        </property>
+        <property name="ip" type="string">
+            <column name="ip" />
+        </property>
+        <set name="impresoras" table="impresora" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_device" />
+            </key>
+            <one-to-many class="com.dimacofi.DAO.Impresora" />
+        </set>
+    </class>
+</hibernate-mapping>

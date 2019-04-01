@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-03-2019 14:36:22 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.dimacofi.DAO.Historial" table="historial" schema="public" optimistic-lock="version">
+        <id name="idHistorial" type="int" column="id_historial">
+            <generator class="sequence">
+                <param name="sequence">hibernate_sequence_3</param>
+            </generator>
+        </id>
+        <property name="mac" type="string">
+            <column name="mac" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>
