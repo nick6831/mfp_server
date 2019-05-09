@@ -19,35 +19,68 @@ public class Printer {
     @JsonProperty("code")
     private Codes code;
 
+    /**
+     *
+     * @param codserie
+     * @param ip
+     * @param val
+     */
     public Printer(String codserie, String ip, Codes val) {
         this.codserie = codserie;
         this.ip = ip;
         this.code = val;
     }
 
+    /**
+     *
+     */
     public Printer() {
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCodserie() {
         return codserie;
     }
 
+    /**
+     *
+     * @param codserie
+     */
     public void setCodserie(String codserie) {
         this.codserie = codserie;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getIp() {
         return ip;
     }
 
+    /**
+     *
+     * @param ip
+     */
     public void setIp(String ip) {
         this.ip = ip;
     }
 
+    /**
+     *
+     * @return
+     */
     public Codes getCode() {
         return code;
     }
 
+    /**
+     *
+     * @param code
+     */
     public void setCode(Codes code) {
         this.code = code;
     }

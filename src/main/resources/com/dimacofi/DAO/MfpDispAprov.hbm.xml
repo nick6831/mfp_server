@@ -80,5 +80,32 @@
         <property name="scannerBn" type="string">
             <column name="scanner_bn" />
         </property>
+        <property name="negroMax" type="string">
+            <column name="negro_max" />
+        </property>
+        <property name="negroAct" type="string">
+            <column name="negro_act" />
+        </property>
+        <property name="cianMax" type="string">
+            <column name="cian_max" />
+        </property>
+        <property name="cianAct" type="string">
+            <column name="cian_act" />
+        </property>
+        <property name="magentaMax" type="string">
+            <column name="magenta_max" />
+        </property>
+        <property name="magentaAct" type="string">
+            <column name="magenta_act" />
+        </property>
+        <property name="amarilloMax" type="string">
+            <column name="amarillo_max" />
+        </property>
+        <property name="amarilloAct" type="string">
+            <column name="amarillo_act" />
+        </property>
+        <property name="marca" type="string">
+            <column name="marca" />
+        </property>
     </class>
 </hibernate-mapping>

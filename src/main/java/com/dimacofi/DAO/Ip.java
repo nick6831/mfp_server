@@ -1,5 +1,5 @@
 package com.dimacofi.DAO;
-// Generated 13-03-2019 14:36:21 by Hibernate Tools 4.3.1
+// Generated 18-04-2019 13:35:06 by Hibernate Tools 4.3.1
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.OneToOne;
@@ -13,39 +13,73 @@ import javax.persistence.OneToOne;
 public class Ip  implements java.io.Serializable {
 
 
-    private String codserie;
+      private String codserie;
      
      @JsonIgnore
      @OneToOne(mappedBy="impresora")
      private Impresora impresora;
      private String ip;
 
+    /**
+     *
+     */
     public Ip() {
     }
 
+    /**
+     *
+     * @param impresora
+     * @param ip
+     */
     public Ip(Impresora impresora, String ip) {
        this.impresora = impresora;
        this.ip = ip;
     }
    
+    /**
+     *
+     * @return
+     */
     public String getCodserie() {
         return this.codserie;
     }
     
+    /**
+     *
+     * @param codserie
+     */
     public void setCodserie(String codserie) {
         this.codserie = codserie;
     }
+
+    /**
+     *
+     * @return
+     */
     public Impresora getImpresora() {
         return this.impresora;
     }
     
+    /**
+     *
+     * @param impresora
+     */
     public void setImpresora(Impresora impresora) {
         this.impresora = impresora;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getIp() {
         return this.ip;
     }
     
+    /**
+     *
+     * @param ip
+     */
     public void setIp(String ip) {
         this.ip = ip;
     }

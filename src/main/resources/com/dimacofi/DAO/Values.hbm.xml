@@ -1,66 +1,70 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13-03-2019 14:36:22 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-04-2019 13:35:08 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class name="com.dimacofi.DAO.Values" optimistic-lock="version" schema="public" table="values">
-    <id column="id_values" name="idValues" type="int">
+    <class name="com.dimacofi.DAO.Values" table="values" schema="public" optimistic-lock="version">
+       <id column="id_values" name="idValues" type="java.lang.Long">
       <generator class="sequence">
         <param name="sequence">hibernate_sequence_2</param>
       </generator>
     </id>
-    <many-to-one class="com.dimacofi.DAO.Impresora" fetch="select" name="impresora">
-      <column length="50" name="codserie"/>
-    </many-to-one>
-    <property name="copiaColor" type="int">
-      <column name="copia_color"/>
-    </property>
-    <property name="copiaBn" type="int">
-      <column name="copia_bn"/>
-    </property>
-    <property name="scannerColor" type="int">
-      <column name="scanner_color"/>
-    </property>
-    <property name="scannerBn" type="int">
-      <column name="scanner_bn"/>
-    </property>
-    <property name="a3Color" type="int">
-      <column name="a3_color"/>
-    </property>
-    <property name="b4Color" type="int">
-      <column name="b4_color"/>
-    </property>
-    <property name="a3Bn" type="int">
-      <column name="a3_bn"/>
-    </property>
-    <property name="b4Bn" type="int">
-      <column name="b4_bn"/>
-    </property>
-    <property name="metro" type="int">
-      <column name="metro"/>
-    </property>
-    <property name="dupl" type="int">
-      <column name="dupl"/>
-    </property>
-    <property name="negro" type="int">
-      <column name="negro"/>
-    </property>
-    <property name="cian" type="int">
-      <column name="cian"/>
-    </property>
-    <property name="magenta" type="int">
-      <column name="magenta"/>
-    </property>
-    <property name="amarillo" type="int">
-      <column name="amarillo"/>
-    </property>
-    <property name="imprColor" type="int">
-      <column name="impr_color"/>
-    </property>
-    <property name="imprBn" type="int">
-      <column name="impr_bn"/>
-    </property>
-    <property name="fechaMuestra" type="timestamp">
-      <column length="13" name="fecha_muestra"/>
-    </property>
-  </class>
+        <many-to-one name="impresora" class="com.dimacofi.DAO.Impresora" fetch="select">
+            <column name="codserie" length="50" />
+        </many-to-one>
+        <property name="imprColor" type="java.lang.Integer">
+            <column name="impr_color" />
+        </property>
+        <property name="imprBn" type="java.lang.Integer">
+            <column name="impr_bn" />
+        </property>
+        <property name="copiaColor" type="java.lang.Integer">
+            <column name="copia_color" />
+        </property>
+        <property name="copiaBn" type="java.lang.Integer">
+            <column name="copia_bn" />
+        </property>
+        <property name="a3Color" type="java.lang.Integer">
+            <column name="a3_color" />
+        </property>
+        <property name="b4Color" type="java.lang.Integer">
+            <column name="b4_color" />
+        </property>
+        <property name="metro" type="java.lang.Integer">
+            <column name="metro" />
+        </property>
+        <property name="dupl" type="java.lang.Integer">
+            <column name="dupl" />
+        </property>
+        <property name="fechaMuestra" type="timestamp">
+            <column name="fecha_muestra" length="22" />
+        </property>
+        <property name="a3Bn" type="java.lang.Integer">
+            <column name="a3_bn" />
+        </property>
+        <property name="b4Bn" type="java.lang.Integer">
+            <column name="b4_bn" />
+        </property>
+        <property name="negro" type="java.lang.Integer">
+            <column name="negro" />
+        </property>
+        <property name="cian" type="java.lang.Integer">
+            <column name="cian" />
+        </property>
+        <property name="magenta" type="java.lang.Integer">
+            <column name="magenta" />
+        </property>
+        <property name="amarillo" type="java.lang.Integer">
+            <column name="amarillo" />
+        </property>
+        <property name="color" type="java.lang.Integer">
+            <column name="color" />
+        </property>
+        <property name="scannerColor" type="java.lang.Integer">
+            <column name="scanner_color" />
+        </property>
+        <property name="scannerBn" type="java.lang.Integer">
+            <column name="scanner_bn" />
+        </property>
+    </class>
 </hibernate-mapping>

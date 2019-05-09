@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-04-2019 13:35:08 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.dimacofi.DAO.ImpAprov" table="imp_aprov" schema="public" optimistic-lock="version">
+        <id name="codserie" type="string">
+            <column name="codserie" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="hh" type="java.lang.Integer">
+            <column name="hh" />
+        </property>
+        <property name="modelo" type="string">
+            <column name="modelo" not-null="true" />
+        </property>
+        <property name="marca" type="string">
+            <column name="marca" not-null="true" />
+        </property>
+        <property name="rut" type="string">
+            <column name="rut" />
+        </property>
+        <property name="cliente" type="string">
+            <column name="cliente" />
+        </property>
+        
+         <property name="contrato" type="int">
+            <column name="contrato" />
+        </property>
+        
+    </class>
+</hibernate-mapping>

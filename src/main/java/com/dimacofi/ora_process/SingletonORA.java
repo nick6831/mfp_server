@@ -42,10 +42,20 @@ public class SingletonORA {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public Connection getConnection() {
         return connection;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     * @throws IOException
+     */
     public static SingletonORA getInstance() throws SQLException, IOException {
         if (instance == null) {
             instance = new SingletonORA();

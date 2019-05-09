@@ -4,7 +4,7 @@
 <!-- Generated 12-03-2019 12:04:33 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.dimacofi.DAO.ImpValues" table="imp_values" schema="public" optimistic-lock="version">
-        <id name="idValues" type="int">
+        <id name="idValues" type="java.lang.Integer">
             <column name="id_values" />
             <generator class="assigned" />
         </id>

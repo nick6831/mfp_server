@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13-03-2019 14:36:22 by Hibernate Tools 4.3.1 -->
+<!-- Generated 18-04-2019 13:35:08 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.dimacofi.DAO.MfpCodes" table="mfp_codes" schema="public" optimistic-lock="version">
         <id name="nomModel" type="string">
@@ -11,17 +11,8 @@
         <property name="marca" type="string">
             <column name="marca" not-null="true" />
         </property>
-             <property name="copiaColor" type="string">
-            <column name="copia_color" />
-        </property>
-        <property name="copiaBn" type="string">
-            <column name="copia_bn" />
-        </property>
-       <property name="imprColor" type="string">
+        <property name="imprColor" type="string">
             <column name="impr_color" />
-        </property>
-        <property name="imprBn" type="string">
-            <column name="impr_bn" />
         </property>
         <property name="a3Color" type="string">
             <column name="a3_color" />
@@ -29,17 +20,26 @@
         <property name="b4Color" type="string">
             <column name="b4_color" />
         </property>
+        <property name="dupl" type="string">
+            <column name="dupl" />
+        </property>
+        <property name="metro" type="string">
+            <column name="metro" />
+        </property>
+        <property name="copiaBn" type="string">
+            <column name="copia_bn" not-null="true" />
+        </property>
+        <property name="copiaColor" type="string">
+            <column name="copia_color" />
+        </property>
+        <property name="imprBn" type="string">
+            <column name="impr_bn" />
+        </property>
         <property name="a3Bn" type="string">
             <column name="a3_bn" />
         </property>
         <property name="b4Bn" type="string">
             <column name="b4_bn" />
-        </property>
-        <property name="metro" type="string">
-            <column name="metro" />
-        </property>
-        <property name="dupl" type="string">
-            <column name="dupl" />
         </property>
         <property name="negro" type="string">
             <column name="negro" />
@@ -58,6 +58,30 @@
         </property>
         <property name="scannerBn" type="string">
             <column name="scanner_bn" />
+        </property>
+        <property name="negroMax" type="string">
+            <column name="negro_max" />
+        </property>
+        <property name="negroAct" type="string">
+            <column name="negro_act" />
+        </property>
+        <property name="cianMax" type="string">
+            <column name="cian_max" />
+        </property>
+        <property name="cianAct" type="string">
+            <column name="cian_act" />
+        </property>
+        <property name="magentaMax" type="string">
+            <column name="magenta_max" />
+        </property>
+        <property name="magentaAct" type="string">
+            <column name="magenta_act" />
+        </property>
+        <property name="amarilloMax" type="string">
+            <column name="amarillo_max" />
+        </property>
+        <property name="amarilloAct" type="string">
+            <column name="amarillo_act" />
         </property>
     </class>
 </hibernate-mapping>

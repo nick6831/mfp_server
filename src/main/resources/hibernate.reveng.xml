@@ -40,16 +40,17 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="printers"/>
-  <table-filter match-name="mfp_codes"/>
-  <table-filter match-name="contratos_mfp"/>
-  <table-filter match-name="monitor_device"/>
-  <table-filter match-name="users"/>
+  <schema-selection match-catalog="postgres"/>
   <table-filter match-name="type_device"/>
-  <table-filter match-name="estado"/>
-  <table-filter match-name="ip"/>
+  <table-filter match-name="mfp_codes"/>
+  <table-filter match-name="monitor_device"/>
+  <table-filter match-name="values"/>
   <table-filter match-name="impresora"/>
+  <table-filter match-name="estado"/>
+  <table-filter match-name="contratos_mfp"/>
+  <table-filter match-name="ip"/>
+  <table-filter match-name="historial"/>
   <table-filter match-name="imp_values"/>
   <table-filter match-name="mfp_disp_aprov"/>
-  <table-filter match-name="historial"/>
+  <table-filter match-name="imp_aprov"/>
 </hibernate-reverse-engineering>

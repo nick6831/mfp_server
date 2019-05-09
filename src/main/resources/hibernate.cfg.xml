@@ -40,25 +40,26 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://100.50.25.54:5432/printers</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">admin123</property>
-        <property name="hibernate.current_session_context_class">thread</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.format_sql">true</property>
-        <mapping resource="com/dimacofi/DAO/ContratosMfp.hbm.xml"/>
-        <mapping resource="com/dimacofi/DAO/Values.hbm.xml"/>
-        <mapping resource="com/dimacofi/DAO/Impresora.hbm.xml"/>
-        <mapping resource="com/dimacofi/DAO/TypeDevice.hbm.xml"/>
-        <mapping resource="com/dimacofi/DAO/Ip.hbm.xml"/>
-        <mapping resource="com/dimacofi/DAO/MfpCodes.hbm.xml"/>
-        <mapping resource="com/dimacofi/DAO/MonitorDevice.hbm.xml"/>
-        <mapping resource="com/dimacofi/DAO/Estado.hbm.xml"/>
-        <mapping resource="com/dimacofi/DAO/MfpDispAprov.hbm.xml"/>
-        <mapping resource="com/dimacofi/DAO/ImpValues.hbm.xml"/>
-        <mapping resource="com/dimacofi/DAO/Historial.hbm.xml"/>
-    </session-factory>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://100.50.25.54:5435/postgres</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">admin123</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <mapping resource="com/dimacofi/DAO/ContratosMfp.hbm.xml"/>
+    <mapping resource="com/dimacofi/DAO/Values.hbm.xml"/>
+    <mapping resource="com/dimacofi/DAO/Impresora.hbm.xml"/>
+    <mapping resource="com/dimacofi/DAO/TypeDevice.hbm.xml"/>
+    <mapping resource="com/dimacofi/DAO/Ip.hbm.xml"/>
+    <mapping resource="com/dimacofi/DAO/MfpCodes.hbm.xml"/>
+    <mapping resource="com/dimacofi/DAO/MonitorDevice.hbm.xml"/>
+    <mapping resource="com/dimacofi/DAO/Estado.hbm.xml"/>
+    <mapping resource="com/dimacofi/DAO/Historial.hbm.xml"/>
+    <mapping resource="com/dimacofi/DAO/MfpDispAprov.hbm.xml"/>
+    <mapping resource="com/dimacofi/DAO/ImpValues.hbm.xml"/>
+    <mapping resource="com/dimacofi/DAO/ImpAprov.hbm.xml"/>
+  </session-factory>
 </hibernate-configuration>

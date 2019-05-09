@@ -44,9 +44,19 @@ public class Impresora implements java.io.Serializable {
     @OneToOne(mappedBy = "ip")
     private Ip ip;
 
+    /**
+     *
+     */
     public Impresora() {
     }
 
+    /**
+     *
+     * @param codserie
+     * @param contratosMfp
+     * @param modelo
+     * @param marca
+     */
     public Impresora(String codserie, ContratosMfp contratosMfp, String modelo, String marca) {
         this.codserie = codserie;
         this.contratosMfp = contratosMfp;
@@ -54,6 +64,17 @@ public class Impresora implements java.io.Serializable {
         this.marca = marca;
     }
 
+    /**
+     *
+     * @param codserie
+     * @param contratosMfp
+     * @param monitorDevice
+     * @param hh
+     * @param modelo
+     * @param marca
+     * @param valueses
+     * @param ip
+     */
     public Impresora(String codserie, ContratosMfp contratosMfp, MonitorDevice monitorDevice, Integer hh, String modelo, String marca, Set valueses, Ip ip) {
         this.codserie = codserie;
         this.contratosMfp = contratosMfp;
@@ -65,66 +86,130 @@ public class Impresora implements java.io.Serializable {
         this.ip = ip;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCodserie() {
         return this.codserie;
     }
 
+    /**
+     *
+     * @param codserie
+     */
     public void setCodserie(String codserie) {
         this.codserie = codserie;
     }
 
+    /**
+     *
+     * @return
+     */
     public ContratosMfp getContratosMfp() {
         return this.contratosMfp;
     }
 
+    /**
+     *
+     * @param contratosMfp
+     */
     public void setContratosMfp(ContratosMfp contratosMfp) {
         this.contratosMfp = contratosMfp;
     }
 
+    /**
+     *
+     * @return
+     */
     public MonitorDevice getMonitorDevice() {
         return this.monitorDevice;
     }
 
+    /**
+     *
+     * @param monitorDevice
+     */
     public void setMonitorDevice(MonitorDevice monitorDevice) {
         this.monitorDevice = monitorDevice;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getHh() {
         return this.hh;
     }
 
+    /**
+     *
+     * @param hh
+     */
     public void setHh(Integer hh) {
         this.hh = hh;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getModelo() {
         return this.modelo;
     }
 
+    /**
+     *
+     * @param modelo
+     */
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMarca() {
         return this.marca;
     }
 
+    /**
+     *
+     * @param marca
+     */
     public void setMarca(String marca) {
         this.marca = marca;
     }
 
+    /**
+     *
+     * @return
+     */
     public Set getValueses() {
         return this.valueses;
     }
 
+    /**
+     *
+     * @param valueses
+     */
     public void setValueses(Set valueses) {
         this.valueses = valueses;
     }
 
+    /**
+     *
+     * @return
+     */
     public Ip getIp() {
         return this.ip;
     }
 
+    /**
+     *
+     * @param ip
+     */
     public void setIp(Ip ip) {
         this.ip = ip;
     }

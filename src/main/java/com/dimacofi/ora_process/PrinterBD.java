@@ -28,6 +28,20 @@ public class PrinterBD {
     private String marca, modelo, holding_name, holding_rut, client_name, client_rut, fecha, oid_name, oid_value;
     private int hh, dia_corte;
 
+    /**
+     *
+     * @param marca
+     * @param modelo
+     * @param holding_name
+     * @param holding_rut
+     * @param client_name
+     * @param client_rut
+     * @param fecha
+     * @param oid_name
+     * @param oid_value
+     * @param hh
+     * @param dia_corte
+     */
     public PrinterBD(String marca, String modelo, String holding_name, String holding_rut, String client_name, String client_rut, String fecha, String oid_name, String oid_value, int hh, int dia_corte) {
         this.marca = marca;
         this.modelo = modelo;
@@ -42,98 +56,194 @@ public class PrinterBD {
         this.dia_corte = dia_corte;
     }
 
+    /**
+     *
+     */
     public PrinterBD() {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMarca() {
         return marca;
     }
 
+    /**
+     *
+     * @param marca
+     */
     public void setMarca(String marca) {
         this.marca = marca;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getModelo() {
         return modelo;
     }
 
+    /**
+     *
+     * @param modelo
+     */
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getHolding_name() {
         return holding_name;
     }
 
+    /**
+     *
+     * @param holding_name
+     */
     public void setHolding_name(String holding_name) {
         this.holding_name = holding_name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getHolding_rut() {
         return holding_rut;
     }
 
+    /**
+     *
+     * @param holding_rut
+     */
     public void setHolding_rut(String holding_rut) {
         this.holding_rut = holding_rut;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getClient_name() {
         return client_name;
     }
 
+    /**
+     *
+     * @param client_name
+     */
     public void setClient_name(String client_name) {
         this.client_name = client_name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getClient_rut() {
         return client_rut;
     }
 
+    /**
+     *
+     * @param client_rut
+     */
     public void setClient_rut(String client_rut) {
         this.client_rut = client_rut;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getFecha() {
         return fecha;
     }
 
+    /**
+     *
+     * @param fecha
+     */
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getOid_name() {
         return oid_name;
     }
 
+    /**
+     *
+     * @param oid_name
+     */
     public void setOid_name(String oid_name) {
         this.oid_name = oid_name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getOid_value() {
         return oid_value;
     }
 
+    /**
+     *
+     * @param oid_value
+     */
     public void setOid_value(String oid_value) {
         this.oid_value = oid_value;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getHh() {
         return hh;
     }
 
+    /**
+     *
+     * @param hh
+     */
     public void setHh(int hh) {
         this.hh = hh;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getDia_corte() {
         return dia_corte;
     }
 
+    /**
+     *
+     * @param dia_corte
+     */
     public void setDia_corte(int dia_corte) {
         this.dia_corte = dia_corte;
     }
 
+    /**
+     *
+     * @throws SQLException
+     * @throws IOException
+     */
     public void addData() throws SQLException, IOException {
 
         Connection dbORA = SingletonORA.getInstance().getConnection();
@@ -144,6 +254,8 @@ public class PrinterBD {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
+        
+        
         while (rs.next()) {
 
             ContratosMfp mfp = new ContratosMfp();
@@ -168,7 +280,7 @@ public class PrinterBD {
         ResultSet rs2 = stmORA.executeQuery("SELECT c.id contrato, ep.HH,  ep.DESCRIPCION,  ep.serie, ep.MARCA FROM SAIAPP_CONTRATO c, SAIAPP_CLIENTEV cl, sai_mif_v ep, SAIAPP_HOLDINGS HO WHERE c.cliente_ID = cl.customer_id AND c.estado = 'VALIDADO' AND c.id = ep.contrato AND cl.customer_numeric = ho.rut_cliente(+) and ep.serie is not null");
         while (rs2.next()) {
 
-            Impresora imp = new Impresora();
+            
             int contrato = rs2.getInt("CONTRATO");
             int hhs = rs2.getInt("HH");
             String descripcion = rs2.getString("DESCRIPCION");
@@ -185,6 +297,7 @@ public class PrinterBD {
             MonitorDevice de = (MonitorDevice) session.get(MonitorDevice.class, 1);
 
             if (con != null) {
+                Impresora imp = new Impresora();
                 imp.setCodserie(serie);
                 imp.setHh(hhs);
                 imp.setModelo(descripcion);
@@ -196,11 +309,13 @@ public class PrinterBD {
                     imp.setMonitorDevice(de);
                 }
 
-                session.saveOrUpdate(imp);
+                Impresora save = (Impresora) session.merge(imp);
+                session.saveOrUpdate(save);
             }
         }
 
         session.getTransaction().commit();
+        session.close();
 
     }
 
