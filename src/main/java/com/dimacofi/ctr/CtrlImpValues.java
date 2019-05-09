@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -284,7 +283,72 @@ public class CtrlImpValues {
 
     }
     
-   
+   /**
+     *<p>
+     * Obtiene los valores de los equipos por rut de cliente.
+     * </p>
+     * @param rut
+     * @return Lista de Json con los valores de un equipo
+     * @throws JsonProcessingException
+     */
+    public String conRut(String rut) throws JsonProcessingException {
+
+        String json = null;
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setDateFormat(formatter);
+
+        List<ImpValues> val;
+
+        val = session.createSQLQuery("SELECT DISTINCT ON (hh) * FROM imp_values where rut ='" + rut + "' ORDER BY hh, fecha_muestra desc").addEntity(ImpValues.class).list();
+
+        json = objectMapper.writeValueAsString(val);
+
+        session.close();
+
+        return json;
+
+    }
+    
+    
+     /**
+     *<p>
+     * Obtiene los valores de los equipos por nombre cliente.
+     * </p>
+     * @param cliente
+     * @return Lista de Json con los valores de un equipo
+     * @throws JsonProcessingException
+     */
+    public String conCli(String cliente) throws JsonProcessingException {
+
+        String json = null;
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setDateFormat(formatter);
+
+        List<ImpValues> val;
+
+        val = session.createSQLQuery("SELECT DISTINCT ON (hh) * FROM imp_values where cliente ='" + cliente + "' ORDER BY hh, fecha_muestra desc").addEntity(ImpValues.class).list();
+
+        json = objectMapper.writeValueAsString(val);
+
+        session.close();
+
+        return json;
+
+    }
+    
+    
     
     
 }

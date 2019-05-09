@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -473,7 +474,74 @@ public class PrintRestController {
         
     }
     
+      /**
+     *
+     * @param rut
+     * @return
+     * @throws JsonProcessingException
+     * @throws ParseException
+     */
+    @RequestMapping(value = "/rutValue/{rut}", method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseStatus(code = HttpStatus.OK)
+    public ResponseEntity<String> rutValue(@PathVariable("rut") String rut) throws JsonProcessingException, ParseException {
+        
+       CtrlImpValues con = new CtrlImpValues();
+        
+        String json = con.conRut(rut);
+        
+        if (json != null) {
+            return ResponseEntity.ok(json);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No hay");
+        }
+        
+    }
     
     
+     /**
+     *
+     * @param cliente
+     * @return
+     * @throws JsonProcessingException
+     * @throws ParseException
+     */
+    @RequestMapping(value = "/clieValue", params = "cliente",method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseStatus(code = HttpStatus.OK)
+    public ResponseEntity<String> rutcliente(@RequestParam("cliente") String cliente) throws JsonProcessingException, ParseException {
+        
+       CtrlImpValues con = new CtrlImpValues();
+        
+        String json = con.conCli(cliente);
+        
+        if (json != null) {
+            return ResponseEntity.ok(json);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No hay");
+        }
+        
+    }
 
+    
+    
+         /**
+     *
+     * @return
+     * @throws JsonProcessingException
+     * @throws ParseException
+     */
+    @RequestMapping(value = "/clieList", method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseStatus(code = HttpStatus.OK)
+    public ResponseEntity<String> clienteList() throws JsonProcessingException, ParseException {
+        
+       CtrlContratosMfp con = new CtrlContratosMfp();
+        
+        String json = con.CliList();
+        
+        if (json != null) {
+            return ResponseEntity.ok(json);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No hay");
+        }
+        
+    }
 }
