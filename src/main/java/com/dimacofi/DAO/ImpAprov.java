@@ -5,6 +5,13 @@
  */
 package com.dimacofi.DAO;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+
 /**
  *
  * @author nvelasquez
@@ -18,6 +25,7 @@ public class ImpAprov {
     private int contrato;
     private String rut;
     private String cliente;
+
 
     /**
      *
@@ -34,6 +42,7 @@ public class ImpAprov {
      * @param contrato
      * @param rut
      * @param cliente
+     * @param corte
      */
     public ImpAprov(String codserie, Integer hh, String modelo, String marca, int contrato, String rut, String cliente) {
         this.codserie = codserie;
@@ -43,8 +52,9 @@ public class ImpAprov {
         this.contrato = contrato;
         this.rut = rut;
         this.cliente = cliente;
-    }
+           }
 
+  
     /**
      *
      * @return
@@ -157,6 +167,39 @@ public class ImpAprov {
         this.cliente = cliente;
     }
     
+    //metodos 
     
+    //trae la informacion de una impresora
+    /**
+     * <p>
+     * Obtiene una lista de equipos por su marca
+     * </p>
+     *
+     * @param marca debe estar en mayuscula
+     * @return Lista de Json con los valores de un equipo
+     * @throws JsonProcessingException
+     */
+    public String printMarca(String marca) throws JsonProcessingException {
+
+        String Json = null;
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setDateFormat(formatter);
+
+        List<ImpAprov> aprov = session.createCriteria(ImpAprov.class)
+                .add(Restrictions.eq("marca", marca.toUpperCase())).list();
+
+        Json = objectMapper.writeValueAsString(aprov);
+
+        session.close();
+
+        return Json;
+
+    }
 
 }

@@ -42,7 +42,7 @@ Contributor(s):
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://100.50.25.54:5435/postgres</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://100.8.99.120:5432/postgres</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">admin123</property>
     <property name="hibernate.current_session_context_class">thread</property>

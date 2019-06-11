@@ -24,9 +24,12 @@
             <column name="cliente" />
         </property>
         
+        
+        
          <property name="contrato" type="int">
             <column name="contrato" />
         </property>
+
         
     </class>
 </hibernate-mapping>

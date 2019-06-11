@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dimacofi.ctr;
+package com.dimacofi.Impl;
 
+import com.dimacofi.DAO.ContratosMfp;
 import com.dimacofi.DAO.HibernateUtil;
 import com.dimacofi.DAO.Impresora;
 import com.dimacofi.DAO.Values;
@@ -23,31 +24,27 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author nvelasquez
  */
-public class CtrlImpresora {
- 
-    
+public class ImpresoraImpl {
+
     @JsonProperty("codserie")
     private String codserie;
 
     @JsonProperty("val")
     private Values val;
 
-    public CtrlImpresora(String codserie, Values val) {
+    public ImpresoraImpl(String codserie, Values val) {
         this.codserie = codserie;
         this.val = val;
     }
 
-    public CtrlImpresora() {
+    public ImpresoraImpl() {
     }
 
- 
-    
-    
     /**
      * <p>
-     * Inserta los valores consultados en la impresora
-     * a la base de datos
+     * Inserta los valores consultados en la impresora a la base de datos
      * </p>
+     *
      * @param Json
      * @throws IOException
      */
@@ -55,18 +52,18 @@ public class CtrlImpresora {
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
-        List<CtrlImpresora> lvalues;
+        List<ImpresoraImpl> lvalues;
 
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setDateFormat(formatter);
 
-        lvalues = objectMapper.readValue(Json, new TypeReference<List<CtrlContratosMfp>>() {
+        lvalues = objectMapper.readValue(Json, new TypeReference<List<ImpresoraImpl>>() {
         });
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        lvalues.forEach((CtrlImpresora item) -> {
+        lvalues.forEach((ImpresoraImpl item) -> {
             Impresora con = (Impresora) session.get(Impresora.class, item.codserie);
             if (con != null) {
 
@@ -74,7 +71,7 @@ public class CtrlImpresora {
             }
         });
 
-        for (CtrlImpresora item : lvalues) {
+        for (ImpresoraImpl item : lvalues) {
             Values hvalues = item.val;
 
             Values ins = (Values) session.merge(hvalues);
@@ -84,13 +81,12 @@ public class CtrlImpresora {
         session.getTransaction().commit();
         session.close();
     }
-    
-    
-     /**
+
+    /**
      * <p>
-     * Obtiene la informacion de todo
-     * el parque de equipos en SAI
+     * Obtiene la informacion de todo el parque de equipos en SAI
      * </p>
+     *
      * @return Lista de Json con los valores de un equipo
      * @throws JsonProcessingException
      */
@@ -113,12 +109,12 @@ public class CtrlImpresora {
         return Json;
 
     }
-    
-     /**
-     *<p>
-     * Obtiene las propiedades de un equipo
-     * por su HH
+
+    /**
+     * <p>
+     * Obtiene las propiedades de un equipo por su HH
      * </p>
+     *
      * @param hh
      * @return Lista de Json con los valores de un equipo
      * @throws JsonProcessingException
@@ -144,12 +140,13 @@ public class CtrlImpresora {
         return Json;
 
     }
-    
-     /**
+
+    /**
      *
      * <p>
      * Obtiene los equipos asociados a un contrato
      * </p>
+     *
      * @param con
      * @return
      * @throws JsonProcessingException
@@ -160,10 +157,10 @@ public class CtrlImpresora {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        
+
         List<Impresora> impresora = new ArrayList<>();
 
-        impresora =  session.createCriteria(Impresora.class).add(Restrictions.eq("contrato", con)).list();
+        impresora = session.createCriteria(Impresora.class).add(Restrictions.eq("contrato", con)).list();
 
         String json = objectMapper.writeValueAsString(impresora);
 
@@ -172,6 +169,5 @@ public class CtrlImpresora {
         return json;
 
     }
-
 
 }
